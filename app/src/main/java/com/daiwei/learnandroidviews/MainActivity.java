@@ -1,13 +1,12 @@
 package com.daiwei.learnandroidviews;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 
-import com.daiwei.learnandroidviews.databinding.ActivityMainBinding;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+
+import com.daiwei.learnandroidviews.databinding.DataBindingActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,13 +21,23 @@ public class MainActivity extends AppCompatActivity {
     // @SuppressLint("InflateParams") View view = getLayoutInflater().inflate(R.layout.activity_main, null);
 
     // Option 2: inflate with auto gen view binding class
-    ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
+    // ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
+    // View view = binding.getRoot();
+
+    // Option 3: inflate with auto gen data binding class
+    // DataBindingActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.data_binding_activity_main);
+    // User user = new User("Daiwei", "Lu");
+    // binding.setUser(user);
+
+    DataBindingActivityMainBinding binding = DataBindingActivityMainBinding.inflate(getLayoutInflater());
     View view = binding.getRoot();
 
     // Set (display) content
     setContentView(view);
 
+    binding.setUser(new User("Daiwei", "Lu"));
+
     // Use view binding class
-    binding.displayWords.setText("Daiwei");
+    // binding.displayWords.setText("Daiwei");
   }
 }
